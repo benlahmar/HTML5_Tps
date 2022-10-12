@@ -1,0 +1,40 @@
+<html>
+    <head>
+<script>
+        function generer()
+        {
+           tab= document.createElement("table");
+            col=document.getElementById("col").value;
+            row=document.getElementById("row").value;
+           for(i=0;i<col;i++)
+           {
+                tr=document.createElement("tr");
+                for(j=0;j<row;j++)
+                {
+                    td=document.createElement("td");
+                    st=document.createTextNode("bonjour");
+                    td.appendChild(st);
+                    tr.appendChild(td);
+                }
+                tab.appendChild(tr);
+                tab.setAttribute('bgcolor',"gold");
+                tab.setAttribute('border',"2");
+           }
+          
+           t=document.getElementById('cc');
+           t.appendChild(tab) ;
+        }
+
+    </script>
+    </head>
+    <body>
+<div>
+    <input type="number" id="col"/>
+    <input type="number" id="row"/>
+    <input type="button" onclick="generer()" value="generer"/>
+</div>
+<hr/>
+<article id="cc"></article>
+
+    </body>
+</html>

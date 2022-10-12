@@ -1,0 +1,133 @@
+<html>
+    <head>
+        <script>
+            x=44;
+            var y="hello";
+            function test()
+            {
+                ps=document.getElementById('pass');
+                alert(ps.value);
+            }
+
+            function test2()
+            {
+                ps=document.getElementById('pass');
+                document.getElementById('nom').value=ps.value;
+            }
+            function remplir()
+            {
+                nb=document.getElementById('pnbn');
+                nb.value=document.getElementById('nbn').value;
+            }
+
+            function compair()
+            {
+                ps=document.getElementById('pass').value;
+                rps=document.getElementById('repass').value;
+                if(ps!=rps)
+                {
+                    document.getElementById('comp')
+                    .innerHTML="<img src='error.png' width=15/>"   ;
+                }else{
+                    document.getElementById('comp')
+                    .innerHTML="<img src='sucess.png' width=15/>"   ;
+
+                }
+            }
+            function passchek()
+            {
+                x=document.getElementById('pass').value;
+               e=document.getElementById('complexity');
+                if(x.length<5)
+                {
+                      e.innerHTML= "faible";
+                      //e.innerHTML="<progress value='"+x.length+"' max='10'/>"
+                }
+                else
+                if(x.length<8)
+                {
+                    e.innerHTML= "moyen";
+                }
+                else{
+                    e.innerHTML= "fort";
+                }
+            }
+        </script>
+
+    </head>
+    <body>
+        <button onclick="test()"> test</button>
+<form oninput="mnt.value=nbn.value*nbv.value*500">
+<fieldset>
+    <legend>Info Personnel</legend>
+    <div>
+        <label>Nom:</label>
+        <input id="nom" type="text" required placeholder="entrer votre nom"/>
+    </div>
+    <div>
+        <label>Prenom:</label>
+        <input type="text" required/>
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" required/>
+    </div>
+    <div>
+        <label>Tel:</label>
+        <input type="tel" placeholder="Example 0645879854" pattern="0\d{9}" required/>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input id="pass"
+         type="password" oninput="passchek()" required/>
+         <div id="complexity"></div>
+    </div>
+    <div>
+        <label>Repeter Password:</label>
+        <input id="repass" 
+        type="password" onblur="compair()" required/><span id="comp"></span>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Info chambre</legend>
+    <div>
+        <label>Type:</label>
+       <select>
+        <option>Single</option>
+        <option>Double</option>
+        <option>Suite</option>
+       </select>
+    </div>
+    <div>
+        <label>Nb Nuité</label>
+        <input name="nbn" id="nbn" onchange="remplir()"
+        type="number" min="1" max="10"/>
+        <progress id="pnbn" value="1" max="10"></progress>
+    </div>
+    <div>
+        <label>Nb visiteur</label>
+        <input name="nbv" type="number" min="1" max="15"/>
+    </div>
+    </fieldset>
+<fieldset>
+    <legend>paiement</legend>
+    <div>
+        <label>Mnt a payé:</label>
+        <output name="mnt"></output>
+    </div>
+    <div>
+       <img width="40px" src="visa.png" alt="visa"/><input type="radio"  name="payment"/>
+       <img width="40px" src="master.png" alt="visa"/><input type="radio" name="payment"/>
+        <input type="radio" name="payment"/>
+       
+
+    </div>
+</fieldset>
+
+    <div>
+        <input type="submit" value="Valider"/>
+    </div>
+</form>
+
+    </body>
+</html>
